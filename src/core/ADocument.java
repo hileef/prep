@@ -25,5 +25,10 @@ public abstract class ADocument implements Document {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public Sortais fuckdabitch(int nbfuck)
+	{
+		
+	}
 
 }
