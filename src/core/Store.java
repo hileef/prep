@@ -26,5 +26,7 @@ public class Store {
 	public void addDocument(Document d) {
 		documents.put(d.number(), d);
 	}
+	
+	public void casertArien() { ;}
 
 }
