@@ -11,8 +11,8 @@ public class Main {
 		/*Initialisation du Store*/
 		ArrayList<Document> docList = new ArrayList<Document>();
 		ArrayList<Subscriber>subscriberList = new ArrayList<Subscriber>();
-		docList.add(new Book());
-		docList.add(new DVD());
+		docList.add(new Book(36));
+		docList.add(new DVD(52));
 		Store myStore = new Store(subscriberList,docList);
 		
 		/*Initialisation des sockets*/

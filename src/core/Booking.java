@@ -2,19 +2,11 @@ package core;
 
 public class Booking extends Service {
 
-	public Booking(Store store, Transmission t) {
-		super(store, t);
-		// TODO Auto-generated constructor stub
-	}
+	public Booking(Store store, Transmission t) { super(store, t); }
 
 	@Override
-	public void run() {
-		System.out.println("Booking Service start");
-		
-		// get numero d'abonne from transmission
-		int s = 3000;
-		
-		
+	public void action(Integer subscriber, Integer document) throws UnavailableException {
+		store().bookDocument(subscriber, document);
 	}
 
 }
