@@ -12,6 +12,5 @@ public abstract class Service implements Runnable {
 		return myStore;
 	}
 	private Store myStore;
-	
 
 }
