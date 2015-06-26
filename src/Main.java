@@ -20,10 +20,8 @@ public class Main {
 		ServerSocket servSock_2 = new ServerSocket(2600);
 		ServerSocket servSock_3 = new ServerSocket(2700);
 		
-		/*Démarrage des services*/
-		new Thread(new Booking(myStore,servSock_1)).start();
-		new Thread(new Loan(myStore,servSock_2)).start();
-		new Thread(new Return(myStore,servSock_3)).start();
+		/*Démarrage des serveurs*/
+
 		
 	}
 }

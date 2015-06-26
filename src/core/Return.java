@@ -1,11 +1,9 @@
 package core;
 
-import java.net.ServerSocket;
-
 public class Return extends Service {
 
-	public Return(Store store, ServerSocket servSocket) {
-		super(store, servSocket);
+	public Return(Store store) {
+		super(store);
 		
 	}
 

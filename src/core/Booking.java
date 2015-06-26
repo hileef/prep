@@ -1,12 +1,10 @@
 package core;
 
-import java.net.ServerSocket;
-
 public class Booking extends Service {
 
 
-	public Booking(Store store, ServerSocket servSocket) {
-		super(store, servSocket);
+	public Booking(Store store) {
+		super(store);
 		// TODO Auto-generated constructor stub
 	}
 
