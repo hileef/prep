@@ -2,8 +2,8 @@ package core;
 
 public class Loan extends Service {
 
-	public Loan(Store store) {
-		super(store);
+	public Loan(Store store, Transmission transmission) {
+		super(store, transmission);
 		// TODO Auto-generated constructor stub
 	}
 

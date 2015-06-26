@@ -2,8 +2,8 @@ package core;
 
 public class Return extends Service {
 
-	public Return(Store store) {
-		super(store);
+	public Return(Store store, Transmission transmission) {
+		super(store, transmission);
 		
 	}
 
