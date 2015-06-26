@@ -2,16 +2,26 @@ package core;
 
 public abstract class Service implements Runnable {
 
-	public Service(Store store) {
+	private Store myStore;
+	private Transmission transmission;
+	
+	public Service(Store store, Transmission t) {
 		this.myStore = store;
+		this.transmission = t;
+		(new Thread(this)).start();
 	}
 	
 	@Override
 	public abstract void run();
-	public Store getMyStore() {
+	
+	public Transmission transmission() {
+		return transmission;
+	}
+	
+	public Store store() {
 		return myStore;
 	}
-	private Store myStore;
+	
 	
 
 }

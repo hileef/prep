@@ -10,8 +10,8 @@ public class Store {
 	
 	public Store(Collection<Subscriber> ss, Collection<Document> ds) {
 		this();
-		for(Subscriber s : ss) addSubscriber(s);
-		for(Document d : ds) addDocument(d);
+		for(Subscriber s : ss) subscribers.put(s.number(), s);
+		for(Document d : ds) documents.put(d.number(), d);
 	}
 	
 	public Store() {
@@ -19,12 +19,8 @@ public class Store {
 		documents = new HashMap<Integer, Document>();
 	}
 	
-	public void addSubscriber(Subscriber s) {
-		subscribers.put(s.number(), s);
-	}
-	
-	public void addDocument(Document d) {
-		documents.put(d.number(), d);
+	public void bookDocument(Integer subscriber, Integer document) {
+		subscribers.get(subscriber);
 	}
 
 }
