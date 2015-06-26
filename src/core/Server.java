@@ -14,7 +14,7 @@ public class Server implements Runnable {
 		
 		while(true)
 		{
-			new Thread(serviceType.newInstance()).start();
+			//new Thread(serviceType.newInstance()).start();
 		}		
 	}
 	private ServerSocket servSocket;
