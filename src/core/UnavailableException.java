@@ -10,5 +10,9 @@ public class UnavailableException extends Exception {
 	public UnavailableException(String string) {
 		super(string);
 	}
+	
+	public UnavailableException() {
+		this("Sorry, this document is unavailable.");
+	}
 
 }

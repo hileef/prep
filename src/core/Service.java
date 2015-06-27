@@ -1,6 +1,5 @@
 package core;
 
-import java.io.IOException;
 
 public abstract class Service implements Runnable {
 
@@ -8,46 +7,22 @@ public abstract class Service implements Runnable {
 	private Transmission transmission;
 
 	public Service(Store store, Transmission t) {
-		System.out.println("Service "+ this.getClass().getName() +" started on Port "+t.getListeningPort());
+		System.out.println("Service "+ this.getClass().getName() + 
+				" started on Port "+t.getListeningPort());
 		this.store = store;
 		this.transmission = t;
 		(new Thread(this)).start();
 	}
 
 	protected Store store() { return store; }
+	protected Transmission transmission() { return transmission; }
 	
-	private int intFrom(String s, int opt) {
+	protected int intFrom(String s, int opt) {
 		try { return Integer.parseInt(s); }
 		catch(NumberFormatException e) { return opt; }
 	}
 
 	@Override
-	public void run() {
-		
-		try {
-			
-			transmission.send(greeting());
-			transmission.send(store.listDocuments());
-			transmission.send("Please enter your subscriber number : ");
-			int subscriber = intFrom(transmission.receive(), -1);
-			transmission.send("Please enter the document number : ");
-			int document = intFrom(transmission.receive(), -1);
-				
-			try { action(subscriber, document); transmission.send(success()); }
-			catch (UnavailableException e) { transmission.send(e.getMessage()); }
-			
-			transmission.close();
-			
-		} catch(IOException ioe) {
-			ioe.printStackTrace();
-		}
-		
-	}
-
-	public abstract void action(Integer subscriber, Integer document)
-			throws UnavailableException;
-	
-	public abstract String greeting();
-	public abstract String success();
+	public abstract void run() ;
 
 }

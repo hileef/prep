@@ -2,6 +2,7 @@ package core;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class Store {
 
@@ -35,21 +36,58 @@ public class Store {
 		Document d = doc(document); synchronized (d) { d.book(sub(subscriber)); } 
 	}
 	
-	public void loanDocument(Integer subscriber, Integer document) throws UnavailableException {
+	public void borrowDocument(Integer subscriber, Integer document) throws UnavailableException {
 		Document d = doc(document); synchronized (d) { d.borrow(sub(subscriber)); } 
 	}
 	
-	public void returnDocument(Integer subscriber, Integer document) throws UnavailableException {
-		Document d = doc(document); synchronized (d) { d.giveBack(sub(subscriber)); } 
+	public void returnDocument(Integer document) throws UnavailableException {
+		Document d = doc(document); synchronized (d) { d.giveBack(); } 
+	}
+	
+	public String translate(String title, Collection<Document> docs) {
+		String docList = title + " : \n";
+		for(Document d : docs)
+			synchronized(d) { docList += "\t - " + d.number() + " - " + d.toString() + "\n"; }
+		return docList;
+	}
+	
+	@SuppressWarnings("unchecked")
+	private Collection<Document> docs() {
+		return ((HashMap<Integer, Document>) documents.clone()).values();
+	}
+	
+	private Collection<Document> selectAvailable(Collection<Document> docs) {
+		Iterator<Document> it = docs.iterator();
+		while(it.hasNext()) { Document d = it.next(); if(d.isBooked() || d.isBorrowed()) it.remove(); }
+		return docs;
+	}
+	
+	private Collection<Document> selectBorrowed(Collection<Document> docs) {
+		Iterator<Document> it = docs.iterator();
+		while(it.hasNext()) { Document d = it.next(); if(d.isBooked() || d.isAvailable()) it.remove(); }
+		return docs;
+	}
+	
+	private Collection<Document> selectBooked(Collection<Document> docs) {
+		Iterator<Document> it = docs.iterator();
+		while(it.hasNext()) { Document d = it.next(); if(d.isAvailable() || d.isBorrowed()) it.remove(); }
+		return docs;
 	}
 	
 	public String listDocuments() {
-		String docList = "Document List : \n";
-		for(Integer key : documents.keySet()) {
-			Document d = documents.get(key);
-			synchronized(d) { docList += "\t - " + d.number() + " - " + d.toString() + "\n"; }
-		}
-		return docList;
+		return translate("Documents list", docs());
+	}
+	
+	public String listAvailableDocuments() {
+		return translate("Available Documents", selectAvailable(docs()));
+	}
+	
+	public String listBookedDocuments() {
+		return translate("Booked Documents", selectBooked(docs()));
+	}
+	
+	public String listBorrowedDocuments() {
+		return translate("Borrowed Documents", selectBorrowed(docs()));
 	}
 
 }

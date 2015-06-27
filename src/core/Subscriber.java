@@ -13,5 +13,7 @@ public class Subscriber {
 	}
 	
 	public int number() { return number; }
+	public int age() { return age; }
+	public String name() { return name; }
 	
 }

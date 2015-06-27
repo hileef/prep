@@ -1,4 +1,4 @@
-package core;
+package documents;
 
 public class DVD extends ADocument {
 

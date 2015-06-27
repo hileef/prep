@@ -1,6 +1,8 @@
-package core;
+package documents;
 
 import java.util.TimerTask;
+
+import core.Document;
 
 public class GiveBackTimerTask extends TimerTask {
 
@@ -11,7 +13,7 @@ public class GiveBackTimerTask extends TimerTask {
 	}
 	@Override
 	public void run() {
-		this.docToGiveBack.giveBack(null);		
+		this.docToGiveBack.giveBack();		
 	}
 
 }
