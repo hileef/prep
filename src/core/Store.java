@@ -42,5 +42,14 @@ public class Store {
 	public void returnDocument(Integer subscriber, Integer document) throws UnavailableException {
 		Document d = doc(document); synchronized (d) { d.giveBack(sub(subscriber)); } 
 	}
+	
+	public String listDocuments() {
+		String docList = "Document List : \n";
+		for(Integer key : documents.keySet()) {
+			Document d = documents.get(key);
+			synchronized(d) { docList += "\t - " + d.number() + "\n"; }
+		}
+		return docList;
+	}
 
 }
