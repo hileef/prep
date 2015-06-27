@@ -9,6 +9,7 @@ import core.*;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
+		System.out.println("Library Server Started");
 		/*Initialisation du Store*/
 		ArrayList<Document> docList = new ArrayList<Document>();
 		ArrayList<Subscriber> subscriberList = new ArrayList<Subscriber>();
