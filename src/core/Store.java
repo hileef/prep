@@ -19,6 +19,12 @@ public class Store {
 		documents = new HashMap<Integer, Document>();
 	}
 	
+	private Document doc(Integer document) throws UnavailableException {
+		Document d = documents.get(document);
+		if (d == null) throw new UnavailableException("Inexistent document");
+		else return d;
+	}
+	
 	private Subscriber sub(Integer number) throws UnavailableException {
 		Subscriber s = subscribers.get(number);
 		if (s == null) throw new UnavailableException("Inexistent subscriber");
@@ -26,15 +32,15 @@ public class Store {
 	}
 
 	public void bookDocument(Integer subscriber, Integer document) throws UnavailableException {
-		Document d = documents.get(document); synchronized (d) { d.book(sub(subscriber)); } 
+		Document d = doc(document); synchronized (d) { d.book(sub(subscriber)); } 
 	}
 	
 	public void loanDocument(Integer subscriber, Integer document) throws UnavailableException {
-		Document d = documents.get(document); synchronized (d) { d.borrow(sub(subscriber)); } 
+		Document d = doc(document); synchronized (d) { d.borrow(sub(subscriber)); } 
 	}
 	
 	public void returnDocument(Integer subscriber, Integer document) throws UnavailableException {
-		Document d = documents.get(document); synchronized (d) { d.giveBack(sub(subscriber)); } 
+		Document d = doc(document); synchronized (d) { d.giveBack(sub(subscriber)); } 
 	}
 
 }
