@@ -9,4 +9,15 @@ public class Loan extends Service {
 		store().loanDocument(subscriber, document);
 	}
 
+	@Override
+	public String greeting() {
+		return "Welcome to the Loaning Service ! Please enter your subscriber number,"
+				+ " enter, then the document number, then enter.";
+	}
+
+	@Override
+	public String success() {
+		return "Your have successfully borrowed this document. :)";
+	}
+
 }

@@ -10,39 +10,28 @@ public class Transmission {
 	private Socket clientSocket;
 	private BufferedReader in;
 	private PrintWriter out;
-	
-	public Transmission(Socket clientSocket) throws IOException
-	{	
+
+	public Transmission(Socket clientSocket) throws IOException {
 		this.clientSocket = clientSocket;
-		this.in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-		this.out = new PrintWriter(clientSocket.getOutputStream(),true);
-	}	
-	public void sendToClient(String s) throws IOException
-	{
-		if(clientStillAlive())
-			out.println(s);
-		else
-			closeConnection();
+		this.in = new BufferedReader(new InputStreamReader(
+				clientSocket.getInputStream()));
+		this.out = new PrintWriter(clientSocket.getOutputStream(), true);
 	}
-	public String recvFromClient() throws IOException 
-	{
-		if(clientStillAlive())
-			return in.readLine();
-		else
-		{
-			closeConnection();
-			return null;
-		}
+
+	public void send(String s) throws IOException {
+		if (isActive()) out.println(s);
+		else close();
 	}
-	public void closeConnection() throws IOException
-	{
+
+	public String receive() throws IOException {
+		if (isActive()) return in.readLine();
+		else close(); throw new IOException("Connection is closed...");
+	}
+
+	public void close() throws IOException {
 		out.println("Connection closed from server");
-		clientSocket.close();
-		in.close();
-		out.close();
+		clientSocket.close(); in.close(); out.close();
 	}
-	public boolean clientStillAlive()
-	{
-		return clientSocket.isConnected();
-	}
+
+	public boolean isActive() { return clientSocket.isConnected(); }
 }

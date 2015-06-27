@@ -9,4 +9,15 @@ public class Return extends Service {
 		store().returnDocument(subscriber, document);
 	}
 
+	@Override
+	public String greeting() {
+		return "Welcome to the Returning Service ! Please enter your subscriber number,"
+				+ " enter, then the document number, then enter.";
+	}
+
+	@Override
+	public String success() {
+		return "Your have successfully returned this document. :)";
+	}
+
 }
