@@ -54,7 +54,7 @@ public abstract class ADocument implements Document {
 		checkBooking(s);
 		this.subscriber = s;
 		this.booked = true;
-		startGiveBackTimer(6000);			
+		startGiveBackTimer(60000);			
 	}
 
 	@Override
@@ -64,7 +64,6 @@ public abstract class ADocument implements Document {
 		stopGiveBackTimer();
 		this.subscriber = s;
 		this.available = true;		
-		startGiveBackTimer(60000);
 	}
 
 	@Override
