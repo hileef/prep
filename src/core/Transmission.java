@@ -32,6 +32,11 @@ public class Transmission {
 		out.println("Connection closed from server");
 		clientSocket.close(); in.close(); out.close();
 	}
+	
+	public int getListeningPort()
+	{
+		return this.clientSocket.getPort();
+	}
 
 	public boolean isActive() { return clientSocket.isConnected(); }
 }

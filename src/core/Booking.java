@@ -18,5 +18,4 @@ public class Booking extends Service {
 	public String success() {
 		return "Your document has been successfully booked. :)";
 	}
-
 }

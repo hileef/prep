@@ -8,6 +8,7 @@ public abstract class Service implements Runnable {
 	private Transmission transmission;
 
 	public Service(Store store, Transmission t) {
+		System.out.println("Service "+ this.getClass().getName() +" started on Port "+t.getListeningPort());
 		this.store = store;
 		this.transmission = t;
 		(new Thread(this)).start();
