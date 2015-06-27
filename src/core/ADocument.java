@@ -28,9 +28,12 @@ public abstract class ADocument implements Document {
 	public String toString() { return title + " : " + status(); }
 	
 	public String status() {
-		if(booked) return "booked";
-		else if(available) return "available";
-		else return "borrowed";
+		if(!available)
+			return "Borrowed";
+		else if(booked)
+			return "Booked";
+		else
+			return "Available";
 	}
 	
 	private void checkAvailability() throws UnavailableException { 
@@ -72,7 +75,7 @@ public abstract class ADocument implements Document {
 		checkBooking(s);
 		stopGiveBackTimer();
 		this.subscriber = s;
-		this.available = true;		
+		this.available = false;		
 	}
 
 	@Override
