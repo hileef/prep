@@ -8,16 +8,29 @@ public abstract class ADocument implements Document {
 	private int number;
 	private boolean booked;
 	private boolean available;
+	private String title;
+	
 	private Subscriber subscriber;
+	
 	private Timer timer;
 	private TimerTask giveBackTimerTask;
 	
-	public ADocument(int number) {
+	public ADocument(int number, String title) {
 		this.number = number;
 		this.available = true;
 		this.booked = false;
 		this.subscriber = null;
+		this.title = title;
 		this.timer = new Timer();
+	}
+	
+	@Override
+	public String toString() { return title + " : " + status(); }
+	
+	public String status() {
+		if(booked) return "booked";
+		else if(available) return "available";
+		else return "borrowed";
 	}
 	
 	private void checkAvailability() throws UnavailableException { 
@@ -25,13 +38,8 @@ public abstract class ADocument implements Document {
 	}
 	
 	private void checkBooking(Subscriber s) throws UnavailableException{ 
-		if(booked)
-		{
-			if(subscriber != s)
-			{
-				throw new UnavailableException("Document already booked");
-			}
-		}
+		if(booked &&subscriber != s)
+			throw new UnavailableException("Document already booked");
 	}
 	
 	@Override
