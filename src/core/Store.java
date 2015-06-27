@@ -47,7 +47,7 @@ public class Store {
 		String docList = "Document List : \n";
 		for(Integer key : documents.keySet()) {
 			Document d = documents.get(key);
-			synchronized(d) { docList += "\t - " + d.number() + "\n"; }
+			synchronized(d) { docList += "\t - " + d.number() + " - " + d.toString() + "\n"; }
 		}
 		return docList;
 	}
