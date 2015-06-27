@@ -25,7 +25,9 @@ public abstract class Service implements Runnable {
 		
 		try {
 			
-			transmission.send(greeting() + "\n" + "Please enter your subscriber number : ");
+			transmission.send(greeting());
+			transmission.send(store.listDocuments());
+			transmission.send("Please enter your subscriber number : ");
 			int subscriber = intFrom(transmission.receive(), -1);
 			transmission.send("Please enter the document number : ");
 			int document = intFrom(transmission.receive(), -1);
