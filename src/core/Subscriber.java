@@ -1,7 +1,13 @@
 package core;
 
 public class Subscriber {
+	
+	private int number;
 
-	public int number() { return 0; }
+	public Subscriber(int number) {
+		this.number = number;
+	}
+	
+	public int number() { return number; }
 	
 }
