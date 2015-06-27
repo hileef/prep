@@ -23,10 +23,10 @@ public class Main {
 		docList.add(new DVD(20, "ATM 3"));
 		docList.add(new DVD(30, "Pere françois et les petits enfants"));
 		docList.add(new Book(50, "La bite de Cyril 2"));
-		subscriberList.add(new Subscriber(50));
-		subscriberList.add(new Subscriber(60));
-		subscriberList.add(new Subscriber(70));
-		subscriberList.add(new Subscriber(80));
+		subscriberList.add(new Subscriber(50,"Cyril",21));
+		subscriberList.add(new Subscriber(60,"Eliot",21));
+		subscriberList.add(new Subscriber(70,"Yassine",27));
+		subscriberList.add(new Subscriber(80,"Loic",28));
 		Store myStore = new Store(subscriberList,docList);
 		
 		/*Initialisation des sockets*/
