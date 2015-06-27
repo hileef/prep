@@ -53,7 +53,8 @@ public abstract class ADocument implements Document {
 	
 	public void stopGiveBackTimer()
 	{
-		this.giveBackTimerTask.cancel();
+		if(this.giveBackTimerTask != null)
+			this.giveBackTimerTask.cancel();
 	}
 	
 	@Override
