@@ -33,6 +33,8 @@ public abstract class Service implements Runnable {
 			try { action(subscriber, document); transmission.send(success()); }
 			catch (UnavailableException e) { transmission.send(e.getMessage()); }
 			
+			transmission.close();
+			
 		} catch(IOException ioe) {
 			ioe.printStackTrace();
 		}
