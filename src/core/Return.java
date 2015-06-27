@@ -11,8 +11,7 @@ public class Return extends Service {
 
 	@Override
 	public String greeting() {
-		return "Welcome to the Returning Service ! Please enter your subscriber number,"
-				+ " enter, then the document number, then enter.";
+		return "Welcome to the Returning Service !";
 	}
 
 	@Override
