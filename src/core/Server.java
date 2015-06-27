@@ -27,7 +27,8 @@ public class Server implements Runnable {
 					
 					clientSocket = servSocket.accept();
 					Transmission t = new Transmission(clientSocket);
-					serviceType.getConstructors()[0].newInstance(myStore,t);	
+					serviceType.getConstructors()[0].newInstance(myStore,t);
+					System.out.println("Client "+clientSocket.getInetAddress()+" connected on "+serviceType.getName()+" service");
 					
 				} catch (IOException e) {					
 					e.printStackTrace();

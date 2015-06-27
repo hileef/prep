@@ -17,13 +17,22 @@ public class Transmission {
 		this.in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		this.out = new PrintWriter(clientSocket.getOutputStream(),true);
 	}	
-	public void sendToClient(String s)
+	public void sendToClient(String s) throws IOException
 	{
-		out.println(s);
+		if(clientStillAlive())
+			out.println(s);
+		else
+			closeConnection();
 	}
-	public String recvFromClient() throws IOException
+	public String recvFromClient() throws IOException 
 	{
-		return in.readLine();
+		if(clientStillAlive())
+			return in.readLine();
+		else
+		{
+			closeConnection();
+			return null;
+		}
 	}
 	public void closeConnection() throws IOException
 	{

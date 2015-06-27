@@ -17,6 +17,7 @@ public abstract class Service implements Runnable {
 	public void run() {
 		while(true) {
 			
+			// Greeting
 			// receive subscriber number
 			// receive document number
 			int s = 0;
