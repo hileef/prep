@@ -13,16 +13,16 @@ public class Main {
 		/*Initialisation du Store*/
 		ArrayList<Document> docList = new ArrayList<Document>();
 		ArrayList<Subscriber> subscriberList = new ArrayList<Subscriber>();
-		docList.add(new Book(36, "a"));
-		docList.add(new Book(42, "a"));
-		docList.add(new Book(54, "a"));
-		docList.add(new Book(28, "a"));
-		docList.add(new Book(36, "a"));
-		docList.add(new DVD(52, "a"));
-		docList.add(new DVD(10, "a"));
-		docList.add(new DVD(20, "a"));
-		docList.add(new DVD(30, "a"));
-		docList.add(new Book(50, "a"));
+		docList.add(new Book(36, "Moulinex pour les nuls"));
+		docList.add(new Book(42, "La rondelle, cette oeuvre d'art"));
+		docList.add(new Book(54, "Comment faire croire que vous aller vous faire suicider ?"));
+		docList.add(new Book(28, "Tricher pour les nuls"));
+		docList.add(new Book(36, "Pump underwear"));
+		docList.add(new DVD(52, "Vous etes un genie"));
+		docList.add(new DVD(10, "La methode Koué"));
+		docList.add(new DVD(20, "ATM 3"));
+		docList.add(new DVD(30, "Pere françois et les petits enfants"));
+		docList.add(new Book(50, "La bite de Cyril 2"));
 		subscriberList.add(new Subscriber(50));
 		subscriberList.add(new Subscriber(60));
 		subscriberList.add(new Subscriber(70));
