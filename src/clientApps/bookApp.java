@@ -19,7 +19,7 @@ public class bookApp {
 			System.out.println("Server # " + in.readLine());
 			while(in.ready()) System.out.println("Server # " + in.readLine());
 			out.println(sc.nextLine());
-			if(s.isClosed()) break;
+			if(!s.isConnected()) break;
 		}
 		sc.close();
 		in.close();
