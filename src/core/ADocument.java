@@ -69,7 +69,7 @@ public abstract class ADocument implements Document {
 
 	@Override
 	public void giveBack(Subscriber s) {
-		
+		stopGiveBackTimer();
 		this.available = true;
 		this.booked = false;
 		this.subscriber = null;
