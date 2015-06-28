@@ -17,19 +17,14 @@ public class ServerApp {
 		ArrayList<Subscriber> slist = new ArrayList<Subscriber>();
 		
 		dlist.add(new Book(40, "Moulinex pour les nuls"));
-		dlist.add(new Book(42, "La rondelle, cette oeuvre d'art"));
-		dlist.add(new Book(46, "Comment faire croire que vous aller vous faire suicider ?"));
-		dlist.add(new Book(48, "Tricher pour les nuls"));
-		dlist.add(new Book(50, "Pump underwear"));
-		dlist.add(new Book(52, "La bite de Cyril 2"));
+		dlist.add(new Book(42, "The C Programming language"));
+		dlist.add(new Book(46, "La grêce va-t-elle couler ?"));
+		dlist.add(new Book(48, "BretteSoft"));
 		
 		dlist.add(new DVD(11, "Vous etes un genie"));
 		dlist.add(new DVD(22, "La methode Koué"));
-		dlist.add(new DVD(33, "Zanazaka", 16));
-		dlist.add(new DVD(44, "ATM 3", 18));
 		dlist.add(new DVD(55, "Magic Mike", 16));
 		dlist.add(new DVD(66, "Kill Bill", 12));
-		dlist.add(new DVD(77, "Pere françois et les petits enfants"));
 
 		slist.add(new Subscriber(50,"Cyril",21));
 		slist.add(new Subscriber(60,"Eliot",21));
