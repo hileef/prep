@@ -17,6 +17,7 @@ public class Returning extends Service {
 		try {
 			
 			while(true) {
+				transmission().send("=============================");
 				transmission().send("This is the Returning Service");
 				transmission().send(store().listBorrowedDocuments());
 				transmission().send("Please enter the document number to return (-2 to quit) : ");
@@ -25,7 +26,8 @@ public class Returning extends Service {
 				try {
 					store().returnDocument(document);
 					transmission().send("Document" + document + " has been successfully returned.");
-				} catch (UnavailableException e) { transmission().send(e.getMessage()); }
+				} catch (UnavailableException e) { 
+					transmission().send("ERROR >>>>>>>>>> " + e.getMessage()); }
 			}
 			
 			transmission().close();

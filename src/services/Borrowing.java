@@ -18,6 +18,7 @@ public class Borrowing extends Service {
 			
 			while(true) {
 				
+				transmission().send("=============================");
 				transmission().send("This is the Borrowing Service");
 				transmission().send(store().listBookedDocuments());
 				transmission().send(store().listAvailableDocuments());
@@ -28,11 +29,13 @@ public class Borrowing extends Service {
 				
 				transmission().send("Please enter your subscriber number (-2 for quit) : ");
 				int subscriber = intFrom(transmission().receive(), -1);
+				if(document == -2) break;
 				
 				try {
 					store().borrowDocument(subscriber, document);
 					transmission().send("Document " + document + " has been successfully borrowed.");
-				} catch (UnavailableException e) { transmission().send(e.getMessage()); }
+				} catch (UnavailableException e) {
+					transmission().send("ERROR >>>>>>>>>> " + e.getMessage()); }
 			}
 			
 			transmission().close();

@@ -16,6 +16,7 @@ public class Booking extends Service {
 		
 		try {
 			
+			transmission().send("================================");
 			transmission().send("Welcome to the Booking Service !");
 			transmission().send(store().listAvailableDocuments());
 			
@@ -29,7 +30,8 @@ public class Booking extends Service {
 			try {
 				store().bookDocument(subscriber, document);
 				transmission().send("Your document has been successfully booked.");
-			} catch (UnavailableException e) { transmission().send(e.getMessage()); }
+			} catch (UnavailableException e) {
+				transmission().send("ERROR >>>>>>>>>> " + e.getMessage()); }
 			
 			transmission().close();
 			

@@ -12,17 +12,16 @@ public abstract class BaseClient {
 	public abstract int port();
 	
 	public void work() throws IOException {
+		String srv = "";
 		Socket s = new Socket("127.0.0.1", port());
 		BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
 		PrintWriter out = new PrintWriter(s.getOutputStream(),true);
 		Scanner sc = new Scanner(System.in);
-		while(true)
-		{
-			System.out.println("Server # " + in.readLine());
-			while(in.ready()) System.out.println("Server # " + in.readLine());
+		while(true) {
+			while(!(srv = in.readLine()).equals("#-REQUEST") && !srv.equals("#-CLOSE"))
+				System.out.println("Server # " + srv);
+			if(srv.equals("#-CLOSE")) break;
 			out.println(sc.nextLine());
-			if(s.isClosed()) break;
-			//System.out.println(s.isConnected());
 		}
 		s.close();
 		sc.close();
