@@ -35,7 +35,10 @@ public class Borrowing extends Service {
 					store().borrowDocument(subscriber, document);
 					transmission().send("Document " + document + " has been successfully borrowed.");
 				} catch (UnavailableException e) {
-					transmission().send("ERROR >>>>>>>>>> " + e.getMessage()); }
+					transmission().send("ERROR >>>>>>>>>> " + e.getMessage());
+					transmission().send("Please press enter to continue...");
+					transmission().receive();
+				}
 			}
 			
 			transmission().close();

@@ -32,7 +32,7 @@ public abstract class ADocument implements Document {
 		if(this.giveBackTimerTask != null) this.giveBackTimerTask.cancel();
 	}
 	
-	private void failIfBookedByOtherOrBorrowed(Subscriber s) throws UnavailableException {
+	protected void checkBorrowingAndBookingPreconditions(Subscriber s) throws UnavailableException {
 		if(isBooked() && this.subscriber != s)
 			throw new UnavailableException("Someone else has booked this document.");
 		else if(isBorrowed())
@@ -56,14 +56,14 @@ public abstract class ADocument implements Document {
 	
 	@Override
 	public void book(Subscriber s) throws UnavailableException {
-		failIfBookedByOtherOrBorrowed(s);
+		checkBorrowingAndBookingPreconditions(s);
 		this.subscriber = s; startGiveBackTimer(60000);
 		this.status = Status.BOOKED;
 	}
 
 	@Override
 	public void borrow(Subscriber s) throws UnavailableException {
-		failIfBookedByOtherOrBorrowed(s);
+		checkBorrowingAndBookingPreconditions(s);
 		this.subscriber = s; stopGiveBackTimer();
 		this.status = Status.BORROWED;
 	}

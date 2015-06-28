@@ -27,7 +27,10 @@ public class Returning extends Service {
 					store().returnDocument(document);
 					transmission().send("Document" + document + " has been successfully returned.");
 				} catch (UnavailableException e) { 
-					transmission().send("ERROR >>>>>>>>>> " + e.getMessage()); }
+					transmission().send("ERROR >>>>>>>>>> " + e.getMessage());
+					transmission().send("Please press enter to continue...");
+					transmission().receive();
+				}
 			}
 			
 			transmission().close();
